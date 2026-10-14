@@ -3,49 +3,76 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#06121d">
-  <title>بوابة المحاضرات | مجد شامي</title>
+  <meta name="theme-color" content="#07111b">
+  <title>بوابة الأمن السيبراني | مجد شامي</title>
   <style>
-    :root{color-scheme:dark;--mint:#78fff0;--cyan:#31d8ed;--violet:#a78bfa;--ink:#06121d}
+    :root{color-scheme:dark;--ice:#dffcff;--mint:#62efe2;--aqua:#00c6d8;--blue:#637dff;--violet:#a467ff}
     *{box-sizing:border-box}
     html,body{width:100%;height:100%;margin:0}
-    body{overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#123348 0%,#0a1b2a 38%,#06121d 78%);color:#f3fcff;font-family:Tahoma,"Segoe UI",Arial,sans-serif}
-    body::before{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;background:conic-gradient(from 30deg at 50% 48%,transparent 0 30%,rgba(37,226,227,.1) 40%,transparent 49% 67%,rgba(127,106,255,.09) 77%,transparent 88%);filter:blur(80px);animation:ambient 26s linear infinite}
-    .page{position:relative;isolation:isolate;min-height:100svh;width:100%;display:grid;place-items:center;padding:26px 18px 70px;perspective:1400px;overflow:hidden}
-    .logo-backdrop{position:absolute;z-index:-1;left:50%;top:47%;width:min(78vw,760px);height:min(88svh,900px);object-fit:contain;opacity:.86;pointer-events:none;user-select:none;transform:translate(-50%,-50%) translateZ(-70px);filter:saturate(1.2) drop-shadow(0 0 34px rgba(60,221,231,.2));animation:logoFloat 9s ease-in-out infinite,logoColor 24s linear infinite}
-    .event-card{position:relative;z-index:1;width:min(88vw,450px);min-height:min(390px,72svh);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:34px 26px;border:1px solid rgba(177,247,255,.34);border-radius:34px;background:linear-gradient(145deg,rgba(8,24,38,.72),rgba(12,20,42,.67));backdrop-filter:blur(17px) saturate(125%);-webkit-backdrop-filter:blur(17px) saturate(125%);box-shadow:0 34px 100px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.16),0 0 55px rgba(47,206,220,.15);transform-style:preserve-3d;animation:cardFloat 7s ease-in-out infinite;transition:border-color .35s,box-shadow .35s}
-    .event-card::before{content:"";position:absolute;inset:1px;border-radius:33px;padding:1px;background:linear-gradient(140deg,rgba(130,255,243,.45),transparent 34%,rgba(138,131,255,.28) 68%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-    .event-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(125deg,transparent 22%,rgba(255,255,255,.045) 43%,transparent 57%);background-size:220% 100%;animation:sheen 8s ease-in-out infinite}
-    .content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:27px;text-align:center;transform:translateZ(72px)}
-    h1{margin:0;color:#efffff;font-size:clamp(23px,5vw,31px);font-weight:800;line-height:1.45;text-shadow:0 3px 20px rgba(0,0,0,.9),0 0 24px rgba(87,224,228,.18)}
-    .cta{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:64px;padding:15px 28px;overflow:hidden;border:1px solid rgba(202,255,251,.7);border-radius:18px;background:linear-gradient(115deg,#0e94a2,#4868d4 58%,#8461d3);box-shadow:0 13px 33px rgba(29,191,207,.26),inset 0 1px rgba(255,255,255,.34);color:#fff;font-size:clamp(18px,4.4vw,23px);font-weight:800;line-height:1.45;text-decoration:none;text-shadow:0 2px 9px rgba(0,0,0,.35);transform:translateZ(30px);transition:transform .25s,box-shadow .25s,filter .25s}
-    .cta::before{content:"";position:absolute;z-index:-1;inset:-80% -30%;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.34) 50%,transparent 58%);transform:translateX(-70%);transition:transform .65s ease}
-    .cta:hover,.cta:focus-visible{transform:translateY(-5px) translateZ(36px) scale(1.035);box-shadow:0 20px 48px rgba(39,205,222,.4),0 0 27px rgba(131,126,255,.3),inset 0 1px rgba(255,255,255,.42);filter:saturate(1.2)}
+    body{overflow:hidden;background:#07111b;color:var(--ice);font-family:Tahoma,"Segoe UI",Arial,sans-serif}
+    .backdrop{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#153444 0%,#0c1c2a 39%,#07111b 76%)}
+    .backdrop::before,.backdrop::after{content:"";position:absolute;pointer-events:none;border-radius:50%;filter:blur(1px)}
+    .backdrop::before{width:min(78vw,900px);height:min(78vw,900px);left:50%;top:47%;transform:translate(-50%,-50%);border:1px solid rgba(111,233,239,.09);box-shadow:0 0 70px rgba(30,184,205,.07),inset 0 0 75px rgba(115,119,255,.04)}
+    .backdrop::after{inset:-35%;background:conic-gradient(from 15deg at 50% 50%,transparent 0 34%,rgba(35,212,224,.09) 42%,transparent 51% 70%,rgba(154,106,255,.08) 79%,transparent 88%);filter:blur(76px);animation:ambient 30s linear infinite}
+    .watermark{position:absolute;z-index:1;left:50%;top:48%;width:min(91vw,1040px);height:100svh;object-fit:contain;opacity:.2;pointer-events:none;user-select:none;transform:translate(-50%,-50%) translateZ(-70px);filter:saturate(1.4) drop-shadow(0 0 42px rgba(41,221,227,.2));animation:watermarkFloat 11s ease-in-out infinite,logoColor 20s linear infinite}
+    main{position:relative;z-index:2;min-height:100svh;width:100%;display:grid;place-items:center;padding:24px 18px calc(58px + env(safe-area-inset-bottom));perspective:1400px}
+    .stage{width:min(92vw,450px);animation:stageFloat 7s ease-in-out infinite;transform-style:preserve-3d}
+    .profile-card{--tilt-x:0deg;--tilt-y:0deg;position:relative;min-height:min(610px,78svh);width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:27px;padding:40px 28px;border:1px solid rgba(201,247,255,.33);border-radius:34px;background:linear-gradient(155deg,rgba(19,39,55,.75),rgba(11,21,39,.72));box-shadow:0 34px 100px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.17),0 0 54px rgba(52,200,218,.11);backdrop-filter:blur(18px) saturate(128%);-webkit-backdrop-filter:blur(18px) saturate(128%);transform-style:preserve-3d;transform:rotateX(var(--tilt-x)) rotateY(var(--tilt-y));transition:transform .22s ease,border-color .3s,box-shadow .3s}
+    .profile-card::before{content:"";position:absolute;inset:1px;border-radius:33px;padding:1px;background:linear-gradient(145deg,rgba(119,255,239,.54),transparent 32%,rgba(132,124,255,.29) 70%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+    .avatar-ring{position:relative;width:174px;height:174px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle,rgba(17,33,51,.35) 45%,rgba(81,211,222,.12) 70%,transparent 72%);box-shadow:0 0 46px rgba(37,218,221,.19),inset 0 0 24px rgba(174,138,255,.12);transform:translateZ(72px)}
+    .avatar-ring::before{content:"";position:absolute;inset:3px;border-radius:50%;border:1px solid rgba(158,247,250,.42);box-shadow:0 0 21px rgba(66,225,232,.19)}
+    .avatar{width:144px;height:144px;object-fit:contain;filter:saturate(1.4) drop-shadow(0 10px 20px rgba(0,0,0,.28));animation:avatarColor 19s linear infinite,avatarBob 6s ease-in-out infinite;user-select:none;pointer-events:none}
+    h1{position:relative;z-index:1;margin:0;color:#f2feff;font-size:clamp(23px,5vw,30px);font-weight:800;line-height:1.5;text-align:center;letter-spacing:.1px;text-shadow:0 3px 18px rgba(0,0,0,.68),0 0 25px rgba(91,223,226,.18);transform:translateZ(54px)}
+    .cta{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;gap:12px;width:min(100%,340px);min-height:64px;padding:15px 24px;overflow:hidden;border:1px solid rgba(221,255,252,.7);border-radius:999px;background:linear-gradient(112deg,#10a5ad 0%,#3979d8 51%,#8a58d1 100%);box-shadow:0 13px 34px rgba(30,189,208,.28),inset 0 1px rgba(255,255,255,.42);color:#fff;font-size:clamp(18px,4.5vw,22px);font-weight:800;line-height:1.4;text-align:center;text-decoration:none;text-shadow:0 2px 9px rgba(0,0,0,.32);transform:translateZ(68px);transition:transform .24s,box-shadow .24s,filter .24s}
+    .cta::before{content:"";position:absolute;z-index:-1;inset:-70% -35%;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.4) 50%,transparent 58%);transform:translateX(-70%);transition:transform .7s ease}
+    .cta:hover,.cta:focus-visible{transform:translateY(-5px) translateZ(76px) scale(1.035);box-shadow:0 20px 48px rgba(40,203,224,.4),0 0 28px rgba(149,121,255,.28),inset 0 1px rgba(255,255,255,.5);filter:saturate(1.18)}
     .cta:hover::before,.cta:focus-visible::before{transform:translateX(70%)}
-    .cta:focus-visible{outline:2px solid #b9fffb;outline-offset:6px}
-    .cta .emoji{font-size:1.08em;filter:drop-shadow(0 2px 5px rgba(0,0,0,.25))}
-    .signature{position:fixed;z-index:2;right:0;bottom:calc(13px + env(safe-area-inset-bottom));left:0;margin:0;text-align:center;color:rgba(221,244,250,.66);font-size:13px;letter-spacing:.8px;text-shadow:0 2px 10px rgba(0,0,0,.5)}
-    @keyframes logoFloat{0%,100%{transform:translate(-50%,-50%) translateZ(-70px) rotateY(-7deg) rotateX(3deg) scale(1)}50%{transform:translate(-50%,-52%) translateZ(-45px) rotateY(7deg) rotateX(-3deg) scale(1.035)}}
-    @keyframes logoColor{0%,100%{filter:hue-rotate(0deg) saturate(1.2) drop-shadow(0 0 34px rgba(60,221,231,.24))}33%{filter:hue-rotate(100deg) saturate(1.35) drop-shadow(0 0 40px rgba(77,171,255,.27))}66%{filter:hue-rotate(230deg) saturate(1.3) drop-shadow(0 0 38px rgba(185,115,255,.26))}}
-    @keyframes cardFloat{0%,100%{transform:rotateY(-3deg) rotateX(2deg) translateY(3px)}50%{transform:rotateY(3deg) rotateX(-1deg) translateY(-8px)}}
+    .cta:focus-visible{outline:2px solid #c3fffa;outline-offset:6px}
+    .emoji{font-size:1.08em;filter:drop-shadow(0 2px 5px rgba(0,0,0,.25))}
+    .signature{position:fixed;z-index:3;right:0;bottom:calc(14px + env(safe-area-inset-bottom));left:0;margin:0;color:rgba(220,244,249,.63);font-size:13px;letter-spacing:.7px;text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.62)}
+    @keyframes stageFloat{0%,100%{transform:translateY(3px)}50%{transform:translateY(-7px)}}
+    @keyframes avatarBob{0%,100%{transform:translateY(0) translateZ(0)}50%{transform:translateY(-5px) translateZ(8px)}}
+    @keyframes avatarColor{0%,100%{filter:hue-rotate(0deg) saturate(1.35) drop-shadow(0 10px 20px rgba(0,0,0,.25))}33%{filter:hue-rotate(105deg) saturate(1.45) drop-shadow(0 0 22px rgba(62,190,255,.34))}66%{filter:hue-rotate(235deg) saturate(1.4) drop-shadow(0 0 24px rgba(177,117,255,.35))}}
+    @keyframes watermarkFloat{0%,100%{transform:translate(-50%,-50%) translateZ(-70px) rotateY(-5deg) rotateX(2deg) scale(1)}50%{transform:translate(-50%,-51%) translateZ(-50px) rotateY(5deg) rotateX(-2deg) scale(1.03)}}
+    @keyframes logoColor{0%,100%{filter:hue-rotate(0deg) saturate(1.4) drop-shadow(0 0 42px rgba(41,221,227,.2))}35%{filter:hue-rotate(120deg) saturate(1.5) drop-shadow(0 0 46px rgba(81,153,255,.23))}70%{filter:hue-rotate(250deg) saturate(1.5) drop-shadow(0 0 44px rgba(180,108,255,.22))}}
     @keyframes ambient{to{transform:rotate(360deg)}}
-    @keyframes sheen{0%,58%,100%{background-position:140% 0}78%{background-position:-40% 0}}
-    @media(max-width:560px){.page{padding:24px 16px 70px}.logo-backdrop{width:min(92vw,540px);height:min(82svh,760px);top:46%;opacity:.9}.event-card{width:min(91vw,390px);min-height:min(355px,68svh);border-radius:28px;padding:26px 20px}.event-card::before{border-radius:27px}.content{gap:23px}.cta{min-height:59px;padding:13px 22px;border-radius:16px}.signature{font-size:12px}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+    @media(max-width:560px){.watermark{width:100vw;height:91svh;top:47%;opacity:.23}.stage{width:min(90vw,390px)}.profile-card{min-height:min(560px,76svh);gap:23px;padding:30px 22px;border-radius:30px}.profile-card::before{border-radius:29px}.avatar-ring{width:150px;height:150px}.avatar{width:124px;height:124px}.cta{min-height:60px;padding:14px 20px}.signature{font-size:12px}}
+    @media(max-height:680px){.profile-card{min-height:490px;gap:18px;padding:22px}.avatar-ring{width:132px;height:132px}.avatar{width:108px;height:108px}.stage{width:min(88vw,420px)}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
-  <main class="page">
-    <img class="logo-backdrop" src="emblem.png" alt="">
-    <section class="event-card">
-      <div class="content">
+  <div class="backdrop" aria-hidden="true">
+    <img class="watermark" src="emblem.png" alt="">
+  </div>
+  <main>
+    <div class="stage">
+      <section class="profile-card" id="profile-card">
+        <div class="avatar-ring"><img class="avatar" src="emblem.png" alt=""></div>
         <h1>للانتقال اضغط</h1>
         <a class="cta" href="https://drive.google.com/drive/folders/18sUd4ecK3dTLwVIOfs7NiKwjT1Qz01pP" target="_blank" rel="noopener noreferrer">
           <span>انتقل إلى المحاضرات</span><span class="emoji" aria-hidden="true">📚</span>
         </a>
-      </div>
-    </section>
+      </section>
+    </div>
     <p class="signature">م. د. مجد شامي</p>
   </main>
+  <script>
+    const card=document.getElementById('profile-card');
+    const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(card&&!reduceMotion&&window.matchMedia('(pointer:fine)').matches){
+      card.addEventListener('pointermove',event=>{
+        const bounds=card.getBoundingClientRect();
+        const x=(event.clientX-bounds.left)/bounds.width-.5;
+        const y=(event.clientY-bounds.top)/bounds.height-.5;
+        card.style.setProperty('--tilt-x',`${(-y*7).toFixed(2)}deg`);
+        card.style.setProperty('--tilt-y',`${(x*8).toFixed(2)}deg`);
+      });
+      card.addEventListener('pointerleave',()=>{
+        card.style.setProperty('--tilt-x','0deg');
+        card.style.setProperty('--tilt-y','0deg');
+      });
+    }
+  </script>
 </body>
 </html>
