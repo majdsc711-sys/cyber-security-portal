@@ -3,124 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#050b14">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; img-src 'self'; style-src 'self'; script-src 'none'; connect-src 'none'; font-src 'self'; object-src 'none'; media-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#071018">
   <meta name="description" content="بوابة الوصول إلى محاضرات الأمن السيبراني.">
   <title>بوابة الأمن السيبراني | m.j.d</title>
-  <style>
-    :root{color-scheme:dark;--cyan:#67f4ed;--blue:#43b7ff;--violet:#a478ff;--ink:#050b14;--white:#f3ffff}
-    *{box-sizing:border-box}
-    html,body{min-height:100%;margin:0}
-    body{min-height:100svh;overflow-x:hidden;background:var(--ink);color:var(--white);font-family:Tahoma,"Segoe UI",Arial,sans-serif}
-    .backdrop{position:fixed;inset:0;z-index:0;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 50% 43%,#102a3a 0%,#091522 37%,#050b14 74%)}
-    .backdrop::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(104,221,239,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(104,221,239,.045) 1px,transparent 1px);background-size:64px 64px;opacity:.34;mask-image:radial-gradient(ellipse at center,#000 8%,transparent 74%);transform:perspective(700px) rotateX(59deg) scale(1.55) translateY(22%);transform-origin:bottom center}
-    .backdrop::after{content:"";position:absolute;inset:-40%;z-index:0;pointer-events:none;background:conic-gradient(from 40deg at 50% 50%,transparent 0 24%,rgba(45,212,225,.09) 32%,transparent 42% 64%,rgba(136,91,255,.09) 73%,transparent 84%);filter:blur(78px);animation:ambient 42s linear infinite}
-    #network{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;opacity:.73}
-    .watermark{position:absolute;z-index:1;left:50%;top:49%;width:min(78vw,860px);height:96svh;object-fit:contain;opacity:.095;pointer-events:none;user-select:none;filter:saturate(1.8) drop-shadow(0 0 40px rgba(57,219,229,.25));transform:translate(-50%,-50%);animation:watermarkPulse 12s ease-in-out infinite,watermarkHue 24s linear infinite}
-    main{position:relative;z-index:2;min-height:100svh;display:grid;place-items:center;padding:24px 18px calc(62px + env(safe-area-inset-bottom));perspective:1500px}
-    .portal{width:min(100%,480px);display:flex;flex-direction:column;align-items:center;gap:clamp(8px,2.3vh,22px)}
-    .holo-stage{position:relative;width:clamp(208px,36svh,330px);aspect-ratio:1;display:grid;place-items:center;isolation:isolate;transform-style:preserve-3d;animation:stageFloat 7s ease-in-out infinite}
-    .holo-stage::before{content:"";position:absolute;inset:12%;z-index:-1;border-radius:50%;background:radial-gradient(circle,rgba(48,202,227,.28),rgba(100,89,246,.12) 42%,transparent 72%);filter:blur(20px);animation:corePulse 4.8s ease-in-out infinite}
-    .orbit{position:absolute;left:50%;top:50%;width:111%;height:37%;border:1px solid rgba(125,246,241,.6);border-radius:50%;box-shadow:0 0 12px rgba(56,230,231,.24),inset 0 0 15px rgba(67,158,255,.15);transform-style:preserve-3d;pointer-events:none}
-    .orbit::before,.orbit::after{content:"";position:absolute;width:8px;height:8px;top:50%;border-radius:50%;background:#eaffff;box-shadow:0 0 9px 3px rgba(81,241,238,.8),0 0 23px 7px rgba(70,145,255,.3)}
-    .orbit::before{left:12%;transform:translateY(-50%)}
-    .orbit::after{right:12%;transform:translateY(-50%);background:#dfd5ff;box-shadow:0 0 9px 3px rgba(167,120,255,.84),0 0 23px 7px rgba(111,105,255,.35)}
-    .orbit-one{animation:orbitOne 16s linear infinite}
-    .orbit-two{width:103%;height:48%;border-color:rgba(164,120,255,.42);box-shadow:0 0 14px rgba(150,105,255,.17);animation:orbitTwo 21s linear infinite reverse}
-    .orbit-two::before,.orbit-two::after{width:5px;height:5px}
-    .crest-shell{position:relative;width:72%;height:72%;display:grid;place-items:center;border-radius:34% 34% 38% 38%;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(78,178,211,.045) 35%,rgba(77,62,132,.13));border:1px solid rgba(189,250,255,.28);box-shadow:0 20px 65px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.25),0 0 40px rgba(67,205,221,.15);backdrop-filter:blur(8px);transform:translateZ(34px);transform-style:preserve-3d;animation:crestTilt 9s ease-in-out infinite}
-    .crest-shell::before{content:"";position:absolute;inset:8%;border-radius:31% 31% 37% 37%;border:1px solid rgba(143,244,244,.17);box-shadow:inset 0 0 24px rgba(45,215,226,.07);pointer-events:none}
-    .crest{position:relative;z-index:1;width:83%;height:83%;object-fit:contain;filter:saturate(1.4) drop-shadow(0 0 12px rgba(62,237,229,.55)) drop-shadow(0 18px 22px rgba(0,0,0,.34));user-select:none;pointer-events:none;animation:crestHue 22s linear infinite}
-    .portal-card{--rx:0deg;--ry:0deg;position:relative;width:min(100%,430px);display:flex;flex-direction:column;align-items:center;gap:20px;padding:30px 26px 27px;border:1px solid rgba(170,238,247,.3);border-radius:30px;background:linear-gradient(145deg,rgba(16,35,51,.78),rgba(8,17,31,.78));box-shadow:0 30px 95px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.15),0 0 50px rgba(30,194,212,.1);backdrop-filter:blur(20px) saturate(130%);-webkit-backdrop-filter:blur(20px) saturate(130%);transform:rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;transition:transform .24s ease,border-color .35s,box-shadow .35s}
-    .portal-card::before{content:"";position:absolute;inset:0;padding:1px;border-radius:inherit;background:linear-gradient(135deg,rgba(109,252,239,.54),transparent 29%,transparent 65%,rgba(163,121,255,.45));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-    h1{margin:0;color:var(--white);font-size:clamp(23px,5.3vw,30px);font-weight:800;line-height:1.5;text-align:center;letter-spacing:.1px;text-shadow:0 2px 22px rgba(95,237,241,.16);transform:translateZ(25px)}
-    .cta{position:relative;isolation:isolate;width:min(100%,340px);min-height:64px;display:flex;align-items:center;justify-content:center;gap:12px;overflow:hidden;padding:15px 22px;border:1px solid rgba(226,255,255,.72);border-radius:999px;background:linear-gradient(110deg,#0fb9b0 0%,#398fe5 52%,#895ee6 100%);box-shadow:0 13px 34px rgba(27,200,213,.27),inset 0 1px rgba(255,255,255,.44);color:#fff;text-decoration:none;font-size:clamp(18px,4.7vw,21px);font-weight:800;line-height:1.45;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,.34);transform:translateZ(38px);transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
-    .cta::before{content:"";position:absolute;z-index:-1;inset:-70% -40%;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.48) 50%,transparent 58%);transform:translateX(-75%);transition:transform .75s ease}
-    .cta:hover,.cta:focus-visible{transform:translateY(-4px) translateZ(43px) scale(1.025);box-shadow:0 20px 48px rgba(34,209,222,.42),0 0 30px rgba(153,113,255,.29),inset 0 1px rgba(255,255,255,.52);filter:saturate(1.16)}
-    .cta:hover::before,.cta:focus-visible::before{transform:translateX(75%)}
-    .cta:focus-visible{outline:2px solid #c8fffb;outline-offset:6px}
-    .emoji{font-size:1.08em;filter:drop-shadow(0 2px 5px rgba(0,0,0,.25))}
-    .signature{position:fixed;z-index:3;right:0;bottom:calc(17px + env(safe-area-inset-bottom));left:0;margin:0;color:rgba(220,244,249,.68);font-size:13px;font-weight:600;letter-spacing:2.5px;text-align:center;text-shadow:0 2px 16px rgba(0,0,0,.78)}
-    @keyframes ambient{to{transform:rotate(360deg)}}
-    @keyframes stageFloat{0%,100%{transform:translateY(3px)}50%{transform:translateY(-8px)}}
-    @keyframes corePulse{0%,100%{opacity:.56;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
-    @keyframes orbitOne{from{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(0deg)}to{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(360deg)}}
-    @keyframes orbitTwo{from{transform:translate(-50%,-50%) rotateX(71deg) rotateY(29deg) rotateZ(0deg)}to{transform:translate(-50%,-50%) rotateX(71deg) rotateY(29deg) rotateZ(360deg)}}
-    @keyframes crestTilt{0%,100%{transform:translateZ(34px) rotateY(-4deg) rotateX(2deg)}50%{transform:translateZ(42px) rotateY(4deg) rotateX(-2deg)}}
-    @keyframes crestHue{0%,100%{filter:hue-rotate(0deg) saturate(1.4) drop-shadow(0 0 12px rgba(62,237,229,.55)) drop-shadow(0 18px 22px rgba(0,0,0,.34))}33%{filter:hue-rotate(95deg) saturate(1.5) drop-shadow(0 0 16px rgba(62,176,255,.65)) drop-shadow(0 18px 22px rgba(0,0,0,.34))}66%{filter:hue-rotate(225deg) saturate(1.5) drop-shadow(0 0 15px rgba(175,111,255,.62)) drop-shadow(0 18px 22px rgba(0,0,0,.34))}}
-    @keyframes watermarkPulse{0%,100%{opacity:.075;transform:translate(-50%,-50%) scale(.98)}50%{opacity:.13;transform:translate(-50%,-50%) scale(1.025)}}
-    @keyframes watermarkHue{0%,100%{filter:hue-rotate(0deg) saturate(1.7) drop-shadow(0 0 40px rgba(57,219,229,.22))}50%{filter:hue-rotate(180deg) saturate(1.8) drop-shadow(0 0 44px rgba(151,104,255,.23))}}
-    @media(max-width:560px){.backdrop::before{background-size:52px 52px;opacity:.24}.watermark{width:95vw;height:88svh;opacity:.12}.holo-stage{width:clamp(205px,33svh,275px)}.portal{width:min(100%,390px);gap:10px}.portal-card{gap:17px;padding:25px 20px 22px;border-radius:27px}.cta{min-height:60px;padding:14px 18px}.signature{font-size:12px}}
-    @media(max-height:700px){main{padding-top:12px;padding-bottom:calc(48px + env(safe-area-inset-bottom))}.portal{gap:5px}.holo-stage{width:min(31svh,250px)}.portal-card{gap:14px;padding:21px 22px}.cta{min-height:56px}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="backdrop" aria-hidden="true">
-    <canvas id="network"></canvas>
-    <img class="watermark" src="emblem.png" alt="">
+  <div class="atmosphere" aria-hidden="true">
+    <div class="grid"></div>
+    <div class="light light-cyan"></div>
+    <div class="light light-amber"></div>
+    <img class="ghost-mark" src="emblem.png" alt="">
   </div>
-  <main>
-    <div class="portal">
-      <div class="holo-stage" aria-hidden="true">
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="crest-shell"><img class="crest" src="emblem.png" alt=""></div>
+
+  <main class="page">
+    <section class="portal" aria-labelledby="portal-title">
+      <div class="emblem-stage" aria-hidden="true">
+        <div class="orbit orbit-a"></div>
+        <div class="orbit orbit-b"></div>
+        <div class="orbit orbit-c"></div>
+        <div class="emblem-plaque">
+          <span class="scanline"></span>
+          <img class="emblem" src="emblem.png" alt="">
+        </div>
+        <span class="spark spark-a"></span>
+        <span class="spark spark-b"></span>
+        <span class="spark spark-c"></span>
       </div>
-      <section class="portal-card" id="portal-card">
-        <h1>للانتقال اضغط</h1>
-        <a class="cta" href="https://drive.google.com/drive/folders/18sUd4ecK3dTLwVIOfs7NiKwjT1Qz01pP" target="_blank" rel="noopener noreferrer">
-          <span>انتقل إلى المحاضرات</span><span class="emoji" aria-hidden="true">📚</span>
+
+      <div class="access-panel">
+        <h1 id="portal-title">للانتقال اضغط</h1>
+        <a class="lecture-link" href="https://drive.google.com/drive/folders/18sUd4ecK3dTLwVIOfs7NiKwjT1Qz01pP" target="_blank" rel="noopener noreferrer">
+          <span>انتقل إلى المحاضرات</span>
+          <span class="book" aria-hidden="true">📚</span>
+          <span class="link-arrow" aria-hidden="true">↗</span>
         </a>
-      </section>
-    </div>
+      </div>
+    </section>
+
     <p class="signature">m.j.d</p>
   </main>
-  <script>
-    (()=>{
-      const canvas=document.getElementById('network');
-      const ctx=canvas.getContext('2d',{alpha:true});
-      const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let width=0,height=0,dpr=1,nodes=[],raf=0;
-      const pointer={x:-1000,y:-1000};
-      const palette=['102,238,232','89,161,255','172,129,255'];
-      function resize(){
-        dpr=Math.min(window.devicePixelRatio||1,2);
-        width=window.innerWidth;height=window.innerHeight;
-        canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
-        ctx.setTransform(dpr,0,0,dpr,0,0);
-        const count=Math.max(26,Math.min(82,Math.floor(width*height/14500)));
-        nodes=Array.from({length:count},(_,i)=>({x:Math.random()*width,y:Math.random()*height,vx:(Math.random()-.5)*.23,vy:(Math.random()-.5)*.23,r:Math.random()*1.2+.55,c:i%3}));
-        draw();
-      }
-      function draw(){
-        ctx.clearRect(0,0,width,height);
-        const reach=width<600?92:132;
-        for(let i=0;i<nodes.length;i++){
-          const a=nodes[i];
-          if(!reduceMotion){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>width)a.vx*=-1;if(a.y<0||a.y>height)a.vy*=-1;
-            const dx=a.x-pointer.x,dy=a.y-pointer.y,d=Math.hypot(dx,dy);if(d<105){a.x+=dx/(d||1)*.11;a.y+=dy/(d||1)*.11}}
-          for(let j=i+1;j<nodes.length;j++){
-            const b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);
-            if(d<reach){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(${palette[(a.c+b.c)%3]},${(1-d/reach)*.19})`;ctx.lineWidth=.7;ctx.stroke()}
-          }
-          ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle=`rgba(${palette[a.c]},.7)`;ctx.fill()
-        }
-        if(!reduceMotion)raf=requestAnimationFrame(draw)
-      }
-      window.addEventListener('resize',resize,{passive:true});
-      window.addEventListener('pointermove',e=>{pointer.x=e.clientX;pointer.y=e.clientY},{passive:true});
-      window.addEventListener('pointerleave',()=>{pointer.x=-1000;pointer.y=-1000},{passive:true});
-      resize();
-      const card=document.getElementById('portal-card');
-      if(card&&!reduceMotion&&window.matchMedia('(pointer:fine)').matches){
-        card.addEventListener('pointermove',e=>{
-          const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-          card.style.setProperty('--rx',`${(-y*6).toFixed(2)}deg`);
-          card.style.setProperty('--ry',`${(x*7).toFixed(2)}deg`)
-        });
-        card.addEventListener('pointerleave',()=>{card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg')})
-      }
-    })();
-  </script>
 </body>
 </html>
